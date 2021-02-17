@@ -1,14 +1,13 @@
-package org.sochidrive.ticketlist.mvp.model.api
+package org.sochidrive.ticketlist.mvp.model.entity
 
 import android.os.Parcelable
 import com.google.gson.annotations.Expose
 import kotlinx.android.parcel.Parcelize
-import java.io.Serializable
 
 @Parcelize
-data class AuthData (
+data class AuthAnswer (
     @Expose
-    val login: String,
+    val result: String,
     @Expose
-    val pass: String
+    val data: Manager
 ): Parcelable

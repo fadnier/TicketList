@@ -30,8 +30,6 @@ class LoginFragment : MvpAppCompatFragment(), BackButtonListener, LoginView {
 
     override fun init() {
         buttonLogin.setOnClickListener { clickLoginBtn() }
-
-        ///Здесь сделать проверку на то залогин ли был раньше, если да то сразу кидать дальше
     }
 
     override fun clickLoginBtn() {
