@@ -9,11 +9,15 @@ class Manager (
     @Expose
     val answer: String?,
     @Expose
+    val id: Int?,
+    @Expose
     val login: String?,
     @Expose
     val password: String?,
     @Expose
     val name: String?,
     @Expose
-    val user_level: Int?
+    val user_level: Int?,
+    @Expose
+    val token: String?
 ): Parcelable

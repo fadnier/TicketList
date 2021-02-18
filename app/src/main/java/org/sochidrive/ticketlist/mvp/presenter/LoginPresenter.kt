@@ -6,7 +6,6 @@ import org.sochidrive.ticketlist.mvp.model.helpdesk.IHelpdeskLogin
 import org.sochidrive.ticketlist.mvp.view.LoginView
 import org.sochidrive.ticketlist.navigation.Screens
 import ru.terrakok.cicerone.Router
-import java.util.concurrent.Flow
 import javax.inject.Inject
 
 class LoginPresenter: MvpPresenter<LoginView>() {
@@ -29,7 +28,7 @@ class LoginPresenter: MvpPresenter<LoginView>() {
                 .subscribe({
                     if(it.result=="Ok") {
                         viewState.showMessage("Успешно: "+it.data.name)
-                        router.replaceScreen(Screens.TicketsScreen(it.data))
+                        router.replaceScreen(Screens.MainMenuScreen(it.data))
                     } else {
                         viewState.showMessage(it.data.answer)
                     }

@@ -18,6 +18,24 @@ class TicketsRvAdapter(val presenter: ITicketsListPresenter) : RecyclerView.Adap
         override fun setTicketId(id: Int) {
             ticket_id.text = id.toString()
         }
+
+        override fun setTicketNumber(number: String) {
+            ticket_number.text = number
+        }
+
+        override fun setTicketAddress(address: String) {
+            ticket_address.text = address
+        }
+
+        override fun setTicketDescr(descr: String) {
+            ticket_descr.text = descr
+        }
+
+        override fun setTicketUsername(username: String) {
+            ticket_username.text = username
+        }
+
+
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =

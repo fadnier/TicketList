@@ -7,5 +7,13 @@ import kotlinx.android.parcel.Parcelize
 @Parcelize
 class Ticket (
     @Expose
-    val record_id: Int
+    val record_id: Int,
+    @Expose
+    val username: String,
+    @Expose
+    val descr: String,
+    @Expose
+    val address: String,
+    @Expose
+    val number: String
 ): Parcelable

@@ -33,6 +33,10 @@ class TicketsPresenter(val manager: Manager): MvpPresenter<TicketsView>() {
             val ticket = tickets[view.pos]
 
             ticket?.record_id.let { view.setTicketId(it) }
+            ticket?.username.let { view.setTicketUsername(it) }
+            ticket?.address.let { view.setTicketAddress(it) }
+            ticket?.descr.let { view.setTicketDescr(it) }
+            ticket?.number.let { view.setTicketNumber(it) }
         }
 
         override fun getCount() = tickets.size

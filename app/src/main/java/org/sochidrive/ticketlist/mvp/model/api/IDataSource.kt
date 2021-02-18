@@ -15,6 +15,7 @@ interface IDataSource {
     @POST("auth_manager/")
     fun getAuth(@Body authData: AuthData): Single<AuthAnswer>
 
+    //@Headers("api-authorization-token: {token}")
     @POST("get_tickets/")
-    fun getTickets(@Body manager: Manager): Single<TicketAnswer>
+    fun getTickets(@Body manager: Manager, @Header("api-authorization-token") token: String): Single<TicketAnswer>
 }

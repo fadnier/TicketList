@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">TicketList</string>
     <string name="login">Login</string>
+    <string name="all_ticket">Все Заявки</string>
+    <string name="name">Имя монтажника</string>
+    <string name="ticket_today">Заявки на сегодня</string>
 </resources>

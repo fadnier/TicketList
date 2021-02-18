@@ -9,7 +9,7 @@ import org.sochidrive.ticketlist.mvp.model.network.INetworkStatus
 
 class RetrofitHelpdeskTickets(val api: IDataSource, val networkStatus: INetworkStatus): ITicketHelpdesk {
     override fun getTickets(manager: Manager): Single<TicketAnswer> {
-        return api.getTickets(manager)
+        return api.getTickets(manager, manager.token.toString())
     }
 
 }
