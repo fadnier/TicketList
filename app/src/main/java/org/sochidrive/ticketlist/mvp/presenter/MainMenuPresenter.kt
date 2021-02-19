@@ -19,7 +19,7 @@ class MainMenuPresenter(private val manager: Manager): MvpPresenter<MainMenuView
     }
 
     fun clickBtnAllTicket() {
-        router.replaceScreen(Screens.TicketsScreen(manager))
+        router.navigateTo(Screens.TicketsScreen(manager))
     }
 
     fun clickBtnTodayTicket() {

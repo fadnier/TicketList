@@ -7,5 +7,6 @@ import moxy.viewstate.strategy.alias.AddToEndSingle
 interface LoginView: MvpView {
     fun init()
     fun clickLoginBtn()
+    fun loadLogo(url: String)
     fun showMessage(message: String?)
 }

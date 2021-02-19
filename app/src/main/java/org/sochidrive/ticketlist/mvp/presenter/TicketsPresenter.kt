@@ -61,7 +61,7 @@ class TicketsPresenter(val manager: Manager): MvpPresenter<TicketsView>() {
             .observeOn(mainThreadScheduler)
             .subscribe({
                 ticketsListPresenter.tickets.clear()
-                ticketsListPresenter.tickets.addAll(it.data)
+                ticketsListPresenter.tickets.addAll(it)
                 viewState.updateTicketsList()
             },{
                 it.fillInStackTrace()

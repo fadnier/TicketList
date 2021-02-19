@@ -16,7 +16,8 @@ import javax.inject.Singleton
         CiceroneModule::class,
         AuthModule::class,
         ApiModule::class,
-        TicketModule::class
+        TicketModule::class,
+        DatabaseModule::class
     ]
 )
 interface AppComponent {

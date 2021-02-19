@@ -12,6 +12,7 @@ import org.sochidrive.ticketlist.R
 import org.sochidrive.ticketlist.mvp.presenter.LoginPresenter
 import org.sochidrive.ticketlist.mvp.view.LoginView
 import org.sochidrive.ticketlist.ui.BackButtonListener
+import org.sochidrive.ticketlist.ui.image.GlideImageLoader
 
 class LoginFragment : MvpAppCompatFragment(), BackButtonListener, LoginView {
 
@@ -34,6 +35,10 @@ class LoginFragment : MvpAppCompatFragment(), BackButtonListener, LoginView {
 
     override fun clickLoginBtn() {
         presenter.clickLoginBtn(loginText.text.toString(),passwordText.text.toString())
+    }
+
+    override fun loadLogo(url: String) {
+        GlideImageLoader().loadInto(url,logoTvintel);
     }
 
     override fun showMessage(message: String?) {

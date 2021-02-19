@@ -20,6 +20,7 @@ class LoginPresenter: MvpPresenter<LoginView>() {
     override fun onFirstViewAttach() {
         super.onFirstViewAttach()
         viewState.init()
+        viewState.loadLogo("https://api.tvintel.info/pic/logo_tvintel3.png")
     }
 
     fun clickLoginBtn(login: String, password: String) {
