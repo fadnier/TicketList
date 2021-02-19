@@ -23,7 +23,7 @@ class MainMenuPresenter(private val manager: Manager): MvpPresenter<MainMenuView
     }
 
     fun clickBtnTodayTicket() {
-        TODO("Not yet implemented")
+        //Заготовка на будующее
     }
 
     fun backClick(): Boolean {
