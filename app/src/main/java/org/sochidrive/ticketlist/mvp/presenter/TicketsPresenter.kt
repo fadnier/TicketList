@@ -40,8 +40,6 @@ class TicketsPresenter(val manager: Manager): MvpPresenter<TicketsView>() {
         }
 
         override fun getCount() = tickets.size
-
-
     }
 
     val ticketsListPresenter = TicketsListPresenter()
@@ -52,7 +50,7 @@ class TicketsPresenter(val manager: Manager): MvpPresenter<TicketsView>() {
         loadData()
 
         ticketsListPresenter.itemClickListener = {
-            //router.navigateTo(Screens.TicketsScreen)
+            router.navigateTo(Screens.TicketScreen(manager,ticketsListPresenter.tickets[it.pos]))
         }
     }
 

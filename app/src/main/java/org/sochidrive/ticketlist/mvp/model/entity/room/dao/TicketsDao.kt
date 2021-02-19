@@ -36,5 +36,5 @@ interface TicketsDao {
     fun getAll(): List<RoomTicket>
 
     @Query("SELECT * FROM RoomTicket WHERE record_id = :recordId")
-    fun findForUser(recordId: String): List<RoomTicket>
+    fun findForTicket(recordId: Int): RoomTicket
 }

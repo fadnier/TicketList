@@ -2,10 +2,7 @@ package org.sochidrive.ticketlist.di
 
 import dagger.Component
 import org.sochidrive.ticketlist.di.module.*
-import org.sochidrive.ticketlist.mvp.presenter.LoginPresenter
-import org.sochidrive.ticketlist.mvp.presenter.MainMenuPresenter
-import org.sochidrive.ticketlist.mvp.presenter.MainPresenter
-import org.sochidrive.ticketlist.mvp.presenter.TicketsPresenter
+import org.sochidrive.ticketlist.mvp.presenter.*
 import org.sochidrive.ticketlist.ui.MainActivity
 import javax.inject.Singleton
 
@@ -26,4 +23,5 @@ interface AppComponent {
     fun inject(loginPresenter: LoginPresenter)
     fun inject(ticketsPresenter: TicketsPresenter)
     fun inject(mainMenuPresenter: MainMenuPresenter)
+    fun inject(ticketPresenter: TicketPresenter)
 }
