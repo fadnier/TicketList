@@ -1,6 +1,8 @@
 package org.sochidrive.ticketlist.ui
 
 import android.os.Bundle
+import androidx.appcompat.widget.Toolbar
+import kotlinx.android.synthetic.main.activity_main.*
 import moxy.MvpAppCompatActivity
 import moxy.ktx.moxyPresenter
 import org.sochidrive.ticketlist.App
@@ -21,6 +23,15 @@ class MainActivity : MvpAppCompatActivity(), MainView {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        val toolbars: Toolbar = toolbar
+
+        setSupportActionBar(toolbars)
+
+        toolbars.setNavigationIcon(R.drawable.ic_baseline_arrow_back_24)
+        toolbars.setNavigationOnClickListener {
+           onBackPressed()
+        }
 
         App.instance.appComponent.inject(this)
     }
