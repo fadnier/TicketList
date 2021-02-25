@@ -10,8 +10,8 @@ import org.sochidrive.ticketlist.mvp.model.entity.room.Database
 import org.sochidrive.ticketlist.mvp.model.entity.room.RoomTicket
 
 class RoomHelpdeskTicketCache(val db: Database): IHelpdeskTicketCache {
-    override fun putTicket(ticket: Ticket) = Completable.fromAction {
-        val roomTicket = RoomTicket(ticket.record_id, ticket.username, ticket.descr, ticket.address, ticket.number)
+    override fun putTicket(ticket: TicketDetail) = Completable.fromAction {
+        val roomTicket = RoomTicket(ticket.record_id, ticket.username, ticket.descr, ticket.address, ticket.number, ticket.created, ticket.execute_start, ticket.execute_final, ticket.task, ticket.mobile, ticket.date_start, ticket.date_start_minute, ticket.date_start_hour, ticket.date_final, ticket.date_final_minute, ticket.date_final_hour)
         db.ticket.update(roomTicket)
     }.subscribeOn(Schedulers.io())
 

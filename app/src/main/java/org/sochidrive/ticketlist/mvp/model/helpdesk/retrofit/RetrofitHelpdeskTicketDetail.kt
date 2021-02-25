@@ -13,7 +13,7 @@ class RetrofitHelpdeskTicketDetail(val api: IDataSource, val networkStatus: INet
     override fun getTicketId(manager: Manager, ticket: Ticket) = networkStatus.isOnlineSingle().flatMap { isOnline->
         if(isOnline) {
             api.getTicketsId(TicketData(manager.id!!,ticket.record_id),manager.token.toString()).flatMap { tickets->
-                cache.putTicket(ticket).toSingleDefault(tickets.data)
+                cache.putTicket(tickets.data).toSingleDefault(tickets.data)
             }
         } else {
             cache.getTicket(ticket)

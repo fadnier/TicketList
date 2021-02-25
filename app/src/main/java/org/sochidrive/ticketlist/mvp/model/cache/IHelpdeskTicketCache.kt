@@ -6,6 +6,6 @@ import org.sochidrive.ticketlist.mvp.model.entity.Ticket
 import org.sochidrive.ticketlist.mvp.model.entity.TicketDetail
 
 interface IHelpdeskTicketCache {
-    fun putTicket(ticket: Ticket): Completable
+    fun putTicket(ticket: TicketDetail): Completable
     fun getTicket(ticket: Ticket): Single<TicketDetail>
 }
