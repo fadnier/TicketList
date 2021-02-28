@@ -10,7 +10,7 @@ import moxy.ktx.moxyPresenter
 import org.sochidrive.ticketlist.App
 import org.sochidrive.ticketlist.R
 import org.sochidrive.ticketlist.mvp.model.entity.Manager
-import org.sochidrive.ticketlist.mvp.model.entity.Ticket
+import org.sochidrive.ticketlist.mvp.model.entity.TicketDetail
 import org.sochidrive.ticketlist.mvp.presenter.TicketPresenter
 import org.sochidrive.ticketlist.mvp.view.TicketView
 import org.sochidrive.ticketlist.ui.BackButtonListener
@@ -21,7 +21,7 @@ class TicketFragment: MvpAppCompatFragment(), BackButtonListener, TicketView {
         private const val MANAGER_ARG = "manager"
         private const val TICKET_ARG = "ticket"
 
-        fun newInstance(manager: Manager, ticket: Ticket) = TicketFragment().apply {
+        fun newInstance(manager: Manager, ticket: TicketDetail) = TicketFragment().apply {
             arguments = Bundle().apply {
                 putParcelable(MANAGER_ARG, manager)
                 putParcelable(TICKET_ARG, ticket)
@@ -31,7 +31,7 @@ class TicketFragment: MvpAppCompatFragment(), BackButtonListener, TicketView {
 
     val presenter by moxyPresenter {
         val manager = arguments?.getParcelable<Manager>(TicketFragment.MANAGER_ARG) as Manager
-        val ticket = arguments?.getParcelable<Ticket>(TicketFragment.TICKET_ARG) as Ticket
+        val ticket = arguments?.getParcelable<TicketDetail>(TicketFragment.TICKET_ARG) as TicketDetail
         TicketPresenter(manager,ticket).apply { App.instance.appComponent.inject(this) }
     }
 

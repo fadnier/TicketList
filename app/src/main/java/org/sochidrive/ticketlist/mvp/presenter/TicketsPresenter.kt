@@ -3,7 +3,7 @@ package org.sochidrive.ticketlist.mvp.presenter
 import io.reactivex.rxjava3.core.Scheduler
 import moxy.MvpPresenter
 import org.sochidrive.ticketlist.mvp.model.entity.Manager
-import org.sochidrive.ticketlist.mvp.model.entity.Ticket
+import org.sochidrive.ticketlist.mvp.model.entity.TicketDetail
 import org.sochidrive.ticketlist.mvp.model.helpdesk.ITicketHelpdesk
 import org.sochidrive.ticketlist.mvp.presenter.list.ITicketsListPresenter
 import org.sochidrive.ticketlist.mvp.view.TicketsView
@@ -27,16 +27,16 @@ class TicketsPresenter(val manager: Manager): MvpPresenter<TicketsView>() {
     class TicketsListPresenter() : ITicketsListPresenter {
         override var itemClickListener: ((TicketItemView) -> Unit)? = null
 
-        val tickets = mutableListOf<Ticket>()
+        val tickets = mutableListOf<TicketDetail>()
 
         override fun bindView(view: TicketItemView) {
             val ticket = tickets[view.pos]
 
-            ticket?.record_id.let { view.setTicketId(it) }
-            ticket?.username.let { view.setTicketUsername(it) }
-            ticket?.address.let { view.setTicketAddress(it) }
-            ticket?.descr.let { view.setTicketDescr(it) }
-            ticket?.number.let { view.setTicketNumber(it) }
+            ticket.record_id.let { view.setTicketId(it) }
+            ticket.username.let { view.setTicketUsername(it) }
+            ticket.address.let { view.setTicketAddress(it) }
+            ticket.theme.let { view.setTicketDescr(it) }
+            ticket.number.let { view.setTicketNumber(it) }
         }
 
         override fun getCount() = tickets.size

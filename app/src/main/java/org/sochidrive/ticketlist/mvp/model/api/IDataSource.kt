@@ -12,7 +12,7 @@ interface IDataSource {
     @POST("auth_manager/")
     fun getAuth(@Body authData: AuthData): Single<AuthAnswer>
 
-    @POST("get_tickets/")
+    @POST("get_tickets_full/")
     fun getTickets(@Body manager: Manager, @Header("api-authorization-token") token: String): Single<TicketAnswer>
 
     @POST("get_tickets_id/")

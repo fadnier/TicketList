@@ -6,21 +6,21 @@ import com.google.gson.annotations.Expose
 
 @Entity
 class RoomTicket (
-        @PrimaryKey
+    @PrimaryKey
     var record_id: Int,
-        var username: String,
-        var descr: String,
-        var address: String,
-        var number: String,
-        val created: String? = null,
-        val execute_start: String? = null,
-        val execute_final: String? = null,
-        val task: String? = null,
-        val mobile: String? = null,
-        val date_start: String? = null,
-        val date_start_minute: String? = null,
-        val date_start_hour: String? = null,
-        val date_final: String? = null,
-        val date_final_minute: String? = null,
-        val date_final_hour: String? = null
+    var username: String,
+    var theme: String,
+    var address: String,
+    var number: String,
+    val created: String,
+    val execute_start: String,
+    val execute_final: String,
+    val task: String,
+    val mobile: String,
+    val date_start: String,
+    val date_start_minute: String,
+    val date_start_hour: String,
+    val date_final: String,
+    val date_final_minute: String,
+    val date_final_hour: String
 )

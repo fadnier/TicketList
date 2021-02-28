@@ -6,36 +6,36 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 class TicketDetail (
-        @Expose
+    @Expose
     val record_id: Int,
-        @Expose
+    @Expose
     val created: String,
-        @Expose
+    @Expose
     val execute_start: String,
-        @Expose
+    @Expose
     val execute_final: String,
-        @Expose
+    @Expose
     val username: String,
-        @Expose
+    @Expose
     val task: String,
-        @Expose
+    @Expose
     val mobile: String,
-        @Expose
+    @Expose
     val address: String,
-        @Expose
-    val descr: String,
-        @Expose
+    @Expose
+    val theme: String,
+    @Expose
     val date_start: String,
-        @Expose
+    @Expose
     val date_start_minute: String,
-        @Expose
+    @Expose
     val date_start_hour: String,
-        @Expose
+    @Expose
     val date_final: String,
-        @Expose
+    @Expose
     val date_final_minute: String,
-        @Expose
+    @Expose
     val date_final_hour: String,
-        @Expose
+    @Expose
     val number: String,
 ): Parcelable

@@ -1,8 +1,7 @@
 package org.sochidrive.ticketlist.navigation
 
-import androidx.fragment.app.Fragment
 import org.sochidrive.ticketlist.mvp.model.entity.Manager
-import org.sochidrive.ticketlist.mvp.model.entity.Ticket
+import org.sochidrive.ticketlist.mvp.model.entity.TicketDetail
 import org.sochidrive.ticketlist.ui.fragment.LoginFragment
 import org.sochidrive.ticketlist.ui.fragment.MainMenuFragment
 import org.sochidrive.ticketlist.ui.fragment.TicketFragment
@@ -23,7 +22,7 @@ class Screens {
         override fun getFragment() = MainMenuFragment.newInstance(manager)
     }
 
-    class TicketScreen(val manager: Manager, val ticket: Ticket) : SupportAppScreen() {
+    class TicketScreen(val manager: Manager, val ticket: TicketDetail) : SupportAppScreen() {
         override fun getFragment() = TicketFragment.newInstance(manager, ticket)
     }
 }

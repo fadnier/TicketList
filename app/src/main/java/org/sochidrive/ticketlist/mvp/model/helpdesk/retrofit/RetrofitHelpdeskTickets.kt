@@ -1,11 +1,9 @@
 package org.sochidrive.ticketlist.mvp.model.helpdesk.retrofit
 
-import io.reactivex.rxjava3.core.Single
 import io.reactivex.rxjava3.schedulers.Schedulers
 import org.sochidrive.ticketlist.mvp.model.api.IDataSource
 import org.sochidrive.ticketlist.mvp.model.cache.IHelpdeskTicketsCache
 import org.sochidrive.ticketlist.mvp.model.entity.Manager
-import org.sochidrive.ticketlist.mvp.model.entity.TicketAnswer
 import org.sochidrive.ticketlist.mvp.model.helpdesk.ITicketHelpdesk
 import org.sochidrive.ticketlist.mvp.model.network.INetworkStatus
 

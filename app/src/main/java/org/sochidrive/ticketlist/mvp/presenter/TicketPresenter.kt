@@ -3,13 +3,13 @@ package org.sochidrive.ticketlist.mvp.presenter
 import io.reactivex.rxjava3.core.Scheduler
 import moxy.MvpPresenter
 import org.sochidrive.ticketlist.mvp.model.entity.Manager
-import org.sochidrive.ticketlist.mvp.model.entity.Ticket
+import org.sochidrive.ticketlist.mvp.model.entity.TicketDetail
 import org.sochidrive.ticketlist.mvp.model.helpdesk.ITicketDetailHelpdesk
 import org.sochidrive.ticketlist.mvp.view.TicketView
 import ru.terrakok.cicerone.Router
 import javax.inject.Inject
 
-class TicketPresenter(val manager: Manager, val ticket: Ticket): MvpPresenter<TicketView>() {
+class TicketPresenter(val manager: Manager, val ticket: TicketDetail): MvpPresenter<TicketView>() {
     @Inject
     lateinit var ticketHelpdesk: ITicketDetailHelpdesk
 
@@ -31,7 +31,7 @@ class TicketPresenter(val manager: Manager, val ticket: Ticket): MvpPresenter<Ti
                 .subscribe({
                     viewState.setAddress(it.address)
                     viewState.setCreated(it.created)
-                    viewState.setDescr(it.descr)
+                    viewState.setDescr(it.theme)
                     viewState.setExecuteStart(it.execute_start)
                     viewState.setMobile(it.mobile)
                     viewState.setNumber(it.number)
