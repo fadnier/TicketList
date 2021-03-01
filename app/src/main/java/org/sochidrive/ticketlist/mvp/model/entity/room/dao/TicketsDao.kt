@@ -35,6 +35,9 @@ interface TicketsDao {
     @Query("SELECT * FROM RoomTicket")
     fun getAll(): List<RoomTicket>
 
+    @Query("SELECT * FROM RoomTicket WHERE date_start = :day ORDER BY date_start, date_start_hour, date_start_minute")
+    fun getTicketDayAll(day: String): List<RoomTicket>
+
     @Query("SELECT * FROM RoomTicket WHERE record_id = :recordId")
     fun findForTicket(recordId: Int): RoomTicket
 }

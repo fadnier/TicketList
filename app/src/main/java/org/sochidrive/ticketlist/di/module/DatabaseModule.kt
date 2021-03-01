@@ -6,8 +6,10 @@ import dagger.Provides
 import org.sochidrive.ticketlist.App
 import org.sochidrive.ticketlist.mvp.model.cache.IHelpdeskTicketCache
 import org.sochidrive.ticketlist.mvp.model.cache.IHelpdeskTicketsCache
+import org.sochidrive.ticketlist.mvp.model.cache.IHelpdeskTicketsDayCache
 import org.sochidrive.ticketlist.mvp.model.cache.room.RoomHelpdeskTicketCache
 import org.sochidrive.ticketlist.mvp.model.cache.room.RoomHelpdeskTicketsCache
+import org.sochidrive.ticketlist.mvp.model.cache.room.RoomHelpdeskTicketsDayCache
 import org.sochidrive.ticketlist.mvp.model.entity.room.Database
 import javax.inject.Singleton
 
@@ -22,8 +24,14 @@ class DatabaseModule {
 
     @Singleton
     @Provides
-    fun ticketsCache(database: Database): IHelpdeskTicketsCache {
+    fun ticketsCCache(database: Database): IHelpdeskTicketsCache {
         return RoomHelpdeskTicketsCache(database)
+    }
+
+    @Singleton
+    @Provides
+    fun ticketsDayCache(database: Database): IHelpdeskTicketsDayCache {
+        return RoomHelpdeskTicketsDayCache(database)
     }
 
     @Singleton

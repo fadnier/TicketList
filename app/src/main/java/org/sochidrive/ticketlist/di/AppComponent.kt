@@ -24,4 +24,5 @@ interface AppComponent {
     fun inject(ticketsPresenter: TicketsPresenter)
     fun inject(mainMenuPresenter: MainMenuPresenter)
     fun inject(ticketPresenter: TicketPresenter)
+    fun inject(ticketsDayPresenter: TicketsDayPresenter)
 }

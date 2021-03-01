@@ -15,6 +15,9 @@ interface IDataSource {
     @POST("get_tickets_full/")
     fun getTickets(@Body manager: Manager, @Header("api-authorization-token") token: String): Single<TicketAnswer>
 
+    @POST("get_day_ticket_table/")
+    fun getTicketsDay(@Body ticketDayData: TicketDayData, @Header("api-authorization-token") token: String): Single<TicketAnswer>
+
     @POST("get_tickets_id/")
     fun getTicketsId(@Body ticketData: TicketData, @Header("api-authorization-token") token: String): Single<TicketDetailAnswer>
 }

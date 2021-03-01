@@ -23,7 +23,7 @@ class MainMenuPresenter(private val manager: Manager): MvpPresenter<MainMenuView
     }
 
     fun clickBtnTodayTicket() {
-        //Заготовка на будующее
+        router.navigateTo(Screens.TicketsDayScreen(manager))
     }
 
     fun backClick(): Boolean {
