@@ -25,7 +25,11 @@ class RoomHelpdeskTicketsCache(val db: Database): IHelpdeskTicketsCache{
             date_start_hour = ticket.date_start_hour,
             date_final = ticket.date_final,
             date_final_minute = ticket.date_final_minute,
-            date_final_hour = ticket.date_final_hour) }
+            date_final_hour = ticket.date_final_hour,
+            status_id = ticket.status_id,
+            status_id_color = ticket.status_id_color,
+            status_id_descr = ticket.status_id_descr,
+            author_name = ticket.author_name) }
         db.ticket.insert(roomTicket)
     }.subscribeOn(Schedulers.io())
 
@@ -46,7 +50,11 @@ class RoomHelpdeskTicketsCache(val db: Database): IHelpdeskTicketsCache{
                 date_final_hour =  roomTicket.date_final_hour,
                 created = roomTicket.created,
                 execute_final = roomTicket.execute_final,
-                execute_start = roomTicket.execute_start)
+                execute_start = roomTicket.execute_start,
+                status_id = roomTicket.status_id,
+                status_id_color = roomTicket.status_id_color,
+                status_id_descr = roomTicket.status_id_descr,
+                author_name = roomTicket.author_name)
         }
     }
 

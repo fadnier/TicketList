@@ -12,10 +12,9 @@ import org.sochidrive.ticketlist.App
 import org.sochidrive.ticketlist.R
 import org.sochidrive.ticketlist.mvp.model.entity.Manager
 import org.sochidrive.ticketlist.mvp.presenter.TicketsDayPresenter
-import org.sochidrive.ticketlist.mvp.presenter.TicketsPresenter
 import org.sochidrive.ticketlist.mvp.view.TicketsView
 import org.sochidrive.ticketlist.ui.BackButtonListener
-import org.sochidrive.ticketlist.ui.adapter.TicketsRvAdapter
+import org.sochidrive.ticketlist.ui.adapter.TicketsDayRvAdapter
 
 class TicketsDayFragment: MvpAppCompatFragment(), BackButtonListener, TicketsView {
 
@@ -29,7 +28,7 @@ class TicketsDayFragment: MvpAppCompatFragment(), BackButtonListener, TicketsVie
         }
     }
 
-    var adapter: TicketsRvAdapter? = null
+    var adapter: TicketsDayRvAdapter? = null
 
     val presenter by moxyPresenter {
         val managers = arguments?.getParcelable<Manager>(MANAGER_ARG) as Manager
@@ -43,7 +42,7 @@ class TicketsDayFragment: MvpAppCompatFragment(), BackButtonListener, TicketsVie
 
     override fun init() {
         rv_tickets.layoutManager = LinearLayoutManager(requireContext())
-        adapter = TicketsRvAdapter(presenter.ticketsListPresenter)
+        adapter = TicketsDayRvAdapter(presenter.ticketsListPresenter)
         rv_tickets.adapter = adapter
     }
 

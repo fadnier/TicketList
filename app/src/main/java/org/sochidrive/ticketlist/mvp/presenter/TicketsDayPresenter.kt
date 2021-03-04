@@ -5,9 +5,10 @@ import moxy.MvpPresenter
 import org.sochidrive.ticketlist.mvp.model.entity.Manager
 import org.sochidrive.ticketlist.mvp.model.entity.TicketDetail
 import org.sochidrive.ticketlist.mvp.model.helpdesk.ITicketDayHelpdesk
-import org.sochidrive.ticketlist.mvp.model.helpdesk.ITicketHelpdesk
+import org.sochidrive.ticketlist.mvp.presenter.list.ITicketsDayListPresenter
 import org.sochidrive.ticketlist.mvp.presenter.list.ITicketsListPresenter
 import org.sochidrive.ticketlist.mvp.view.TicketsView
+import org.sochidrive.ticketlist.mvp.view.list.TicketItemDayView
 import org.sochidrive.ticketlist.mvp.view.list.TicketItemView
 import org.sochidrive.ticketlist.navigation.Screens
 import ru.terrakok.cicerone.Router
@@ -25,19 +26,18 @@ class TicketsDayPresenter(val manager: Manager): MvpPresenter<TicketsView>() {
     lateinit var mainThreadScheduler: Scheduler
 
 
-    class TicketsListPresenter() : ITicketsListPresenter {
-        override var itemClickListener: ((TicketItemView) -> Unit)? = null
+    class TicketsListPresenter() : ITicketsDayListPresenter {
+        override var itemClickListener: ((TicketItemDayView) -> Unit)? = null
 
         val tickets = mutableListOf<TicketDetail>()
 
-        override fun bindView(view: TicketItemView) {
+        override fun bindView(view: TicketItemDayView) {
             val ticket = tickets[view.pos]
-
-            ticket.record_id.let { view.setTicketId(it) }
-            ticket.username.let { view.setTicketUsername(it) }
-            ticket.address.let { view.setTicketAddress(it) }
-            ticket.theme.let { view.setTicketDescr(it) }
-            ticket.number.let { view.setTicketNumber(it) }
+            val time = ticket.date_start_hour+":"+ticket.date_start_minute+"-"+ticket.date_final_hour+":"+ticket.date_final_minute
+            view.setTicketAddress(ticket.address)
+            view.setTime(time)
+            view.setTicketNumber(ticket.number)
+            view.setStatusColor(ticket.status_id_color)
         }
 
         override fun getCount() = tickets.size

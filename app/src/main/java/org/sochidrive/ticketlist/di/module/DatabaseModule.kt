@@ -11,6 +11,7 @@ import org.sochidrive.ticketlist.mvp.model.cache.room.RoomHelpdeskTicketCache
 import org.sochidrive.ticketlist.mvp.model.cache.room.RoomHelpdeskTicketsCache
 import org.sochidrive.ticketlist.mvp.model.cache.room.RoomHelpdeskTicketsDayCache
 import org.sochidrive.ticketlist.mvp.model.entity.room.Database
+import org.sochidrive.ticketlist.mvp.model.entity.room.MIGRATION_1_2
 import javax.inject.Singleton
 
 @Module
@@ -18,8 +19,8 @@ class DatabaseModule {
     @Singleton
     @Provides
     fun database(app: App) = Room.databaseBuilder(app, Database::class.java, Database.DB_NAME)
-            .fallbackToDestructiveMigration()// - для разрушения бд и создания новой
-            //.addMigrations(MIGRATION_1_2)
+            //.fallbackToDestructiveMigration()// - для разрушения бд и создания новой
+            .addMigrations(MIGRATION_1_2)
             .build()
 
     @Singleton

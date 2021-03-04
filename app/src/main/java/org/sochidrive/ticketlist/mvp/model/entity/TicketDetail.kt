@@ -38,4 +38,12 @@ class TicketDetail (
     val date_final_hour: String,
     @Expose
     val number: String,
+    @Expose
+    val status_id: Int,
+    @Expose
+    val status_id_descr: String,
+    @Expose
+    val status_id_color: String,
+    @Expose
+    val author_name: String,
 ): Parcelable

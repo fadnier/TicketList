@@ -22,5 +22,9 @@ class RoomTicket (
     val date_start_hour: String,
     val date_final: String,
     val date_final_minute: String,
-    val date_final_hour: String
+    val date_final_hour: String,
+    val status_id: Int,
+    val status_id_descr: String,
+    val status_id_color: String,
+    val author_name: String
 )
