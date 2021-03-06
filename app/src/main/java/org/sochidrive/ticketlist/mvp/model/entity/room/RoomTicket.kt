@@ -2,7 +2,6 @@ package org.sochidrive.ticketlist.mvp.model.entity.room
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.google.gson.annotations.Expose
 
 @Entity
 class RoomTicket (

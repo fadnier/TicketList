@@ -7,7 +7,7 @@ import kotlinx.android.parcel.Parcelize
 @Parcelize
 data class AuthAnswer (
     @Expose
-    val result: String,
+    var result: String,
     @Expose
     val data: Manager
 ): Parcelable

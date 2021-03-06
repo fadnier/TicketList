@@ -4,9 +4,11 @@ import androidx.room.Room
 import dagger.Module
 import dagger.Provides
 import org.sochidrive.ticketlist.App
+import org.sochidrive.ticketlist.mvp.model.cache.IHelpdeskManagerCache
 import org.sochidrive.ticketlist.mvp.model.cache.IHelpdeskTicketCache
 import org.sochidrive.ticketlist.mvp.model.cache.IHelpdeskTicketsCache
 import org.sochidrive.ticketlist.mvp.model.cache.IHelpdeskTicketsDayCache
+import org.sochidrive.ticketlist.mvp.model.cache.room.RoomHelpdeskManagerCache
 import org.sochidrive.ticketlist.mvp.model.cache.room.RoomHelpdeskTicketCache
 import org.sochidrive.ticketlist.mvp.model.cache.room.RoomHelpdeskTicketsCache
 import org.sochidrive.ticketlist.mvp.model.cache.room.RoomHelpdeskTicketsDayCache
@@ -39,5 +41,11 @@ class DatabaseModule {
     @Provides
     fun ticketCache(database: Database): IHelpdeskTicketCache {
         return RoomHelpdeskTicketCache(database)
+    }
+
+    @Singleton
+    @Provides
+    fun authCache(database: Database): IHelpdeskManagerCache {
+        return RoomHelpdeskManagerCache(database)
     }
 }

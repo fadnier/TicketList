@@ -5,4 +5,5 @@ import org.sochidrive.ticketlist.mvp.model.entity.AuthAnswer
 
 interface IHelpdeskLogin {
     fun getAuth(login: String, password: String): Single<AuthAnswer>
+    fun checkCacheAuth(): Single<AuthAnswer>
 }

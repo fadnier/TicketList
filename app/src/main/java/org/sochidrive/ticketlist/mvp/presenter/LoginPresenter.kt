@@ -21,6 +21,16 @@ class LoginPresenter: MvpPresenter<LoginView>() {
         super.onFirstViewAttach()
         viewState.init()
         viewState.loadLogo("https://api.tvintel.info/pic/logo_tvintel3.png")
+        authManager.checkCacheAuth().observeOn(mainThreadScheduler).subscribe({
+            if(it.result=="Ok") {
+                viewState.showMessage("Востановление: "+it.data.name)
+                router.replaceScreen(Screens.MainMenuScreen(it.data))
+            } else {
+                viewState.showMessage(it.data.answer)
+            }
+        },{
+            it.fillInStackTrace()
+        })
     }
 
     fun clickLoginBtn(login: String, password: String) {
