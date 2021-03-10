@@ -21,8 +21,8 @@ class DatabaseModule {
     @Singleton
     @Provides
     fun database(app: App) = Room.databaseBuilder(app, Database::class.java, Database.DB_NAME)
-            //.fallbackToDestructiveMigration()// - для разрушения бд и создания новой
-            .addMigrations(MIGRATION_1_2)
+            .fallbackToDestructiveMigration()// - для разрушения бд и создания новой
+            //.addMigrations(MIGRATION_1_2)
             .build()
 
     @Singleton

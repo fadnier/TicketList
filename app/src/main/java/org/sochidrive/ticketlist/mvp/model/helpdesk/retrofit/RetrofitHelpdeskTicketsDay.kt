@@ -16,8 +16,8 @@ class RetrofitHelpdeskTicketsDay(val api: IDataSource, val networkStatus: INetwo
         val formatDate = SimpleDateFormat("yyyy-MM-dd")
         val myDate = formatDate.format(Date())
         if(isOnline) {
-            api.getTicketsDay(TicketDayData(manager.id!!,manager.name!!,myDate.toString()),manager.token.toString()).flatMap { tickets->
-                cache.putTickets(tickets.data).toSingleDefault(tickets.data)
+            api.getTicketsDay(TicketDayData(manager.id, manager.name,myDate.toString()),manager.token.toString()).flatMap { tickets->
+                cache.putTickets(tickets.data).toSingleDefault(tickets)
             }
         } else {
             cache.getTickets(myDate.toString())

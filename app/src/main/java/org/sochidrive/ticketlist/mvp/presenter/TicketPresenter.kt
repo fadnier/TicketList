@@ -6,6 +6,7 @@ import org.sochidrive.ticketlist.mvp.model.entity.Manager
 import org.sochidrive.ticketlist.mvp.model.entity.TicketDetail
 import org.sochidrive.ticketlist.mvp.model.helpdesk.ITicketDetailHelpdesk
 import org.sochidrive.ticketlist.mvp.view.TicketView
+import org.sochidrive.ticketlist.navigation.Screens
 import ru.terrakok.cicerone.Router
 import javax.inject.Inject
 
@@ -28,17 +29,21 @@ class TicketPresenter(val manager: Manager, val ticket: TicketDetail): MvpPresen
     fun loadData() {
         ticketHelpdesk.getTicketId(manager,ticket)
                 .observeOn(mainThreadScheduler)
-                .subscribe({
-                    viewState.setAddress(it.address)
-                    viewState.setCreated(it.created)
-                    viewState.setDescr(it.theme)
-                    viewState.setExecuteStart(it.execute_start)
-                    viewState.setMobile(it.mobile)
-                    viewState.setNumber(it.number)
-                    viewState.setRecordId(it.record_id)
-                    viewState.setTask(it.task)
-                    viewState.setUsername(it.username)
-                    viewState.settextExecuteFinal(it.execute_final)
+                .subscribe({ answer ->
+                    if(answer.result=="Ok") {
+                        viewState.setAddress(answer.data.address)
+                        viewState.setCreated(answer.data.created)
+                        viewState.setDescr(answer.data.theme)
+                        viewState.setExecuteStart(answer.data.execute_start)
+                        viewState.setMobile(answer.data.mobile)
+                        viewState.setNumber(answer.data.number)
+                        viewState.setRecordId(answer.data.record_id)
+                        viewState.setTask(answer.data.task)
+                        viewState.setUsername(answer.data.username)
+                        viewState.settextExecuteFinal(answer.data.execute_final)
+                    } else {
+                        router.navigateTo(Screens.LoginScreen())
+                    }
                 },{
                     it.fillInStackTrace()
                 })

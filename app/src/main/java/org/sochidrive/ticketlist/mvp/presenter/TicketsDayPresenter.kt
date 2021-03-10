@@ -59,9 +59,13 @@ class TicketsDayPresenter(val manager: Manager): MvpPresenter<TicketsView>() {
         ticketsDayHelpdesk.getTickets(manager)
             .observeOn(mainThreadScheduler)
             .subscribe({
-                ticketsListPresenter.tickets.clear()
-                ticketsListPresenter.tickets.addAll(it)
-                viewState.updateTicketsList()
+                if(it.result=="Ok") {
+                    ticketsListPresenter.tickets.clear()
+                    ticketsListPresenter.tickets.addAll(it.data)
+                    viewState.updateTicketsList()
+                } else {
+                    router.navigateTo(Screens.LoginScreen())
+                }
             },{
                 it.fillInStackTrace()
             })
