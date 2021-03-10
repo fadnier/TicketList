@@ -37,6 +37,7 @@ class RoomHelpdeskTicketsDayCache(val db: Database): IHelpdeskTicketsDayCache{
 
     override fun getTickets(day: String) = Single.fromCallable {
         TicketAnswer("ok",
+                "",
             db.ticket.getTicketDayAll(day).map { roomTicket ->
                 TicketDetail(record_id =  roomTicket.record_id,
                     username =  roomTicket.username,

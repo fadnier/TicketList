@@ -11,7 +11,8 @@ import org.sochidrive.ticketlist.mvp.model.network.INetworkStatus
 class RetrofitHelpdeskLogin(val api: IDataSource, val networkStatus: INetworkStatus, val cache: IHelpdeskManagerCache): IHelpdeskLogin {
     override fun getAuth(login: String, password: String) = networkStatus.isOnlineSingle().flatMap { isOnline->
         api.getAuth(AuthData(login,password)).flatMap {
-            cache.saveAuthManager(it.data).toSingleDefault(it)
+            it.data?.let { cache.saveAuthManager(it) }
+            Single.fromCallable{ it }
         }
     }.subscribeOn(Schedulers.io())
 

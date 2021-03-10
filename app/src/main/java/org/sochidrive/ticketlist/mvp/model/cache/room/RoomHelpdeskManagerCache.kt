@@ -24,6 +24,7 @@ class RoomHelpdeskManagerCache(val db: Database): IHelpdeskManagerCache {
         db.manager.getManager().let { roomManager ->
             AuthAnswer(
                     result = "ok",
+                    answer = "",
                     data = Manager(answer = null,
                             id = roomManager.id,
                             login = roomManager.login,

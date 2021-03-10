@@ -36,6 +36,7 @@ class RoomHelpdeskTicketsCache(val db: Database): IHelpdeskTicketsCache{
 
     override fun getTickets() = Single.fromCallable {
         TicketAnswer("ok",
+                "",
                 db.ticket.getAll().map { roomTicket ->
                     TicketDetail(record_id =  roomTicket.record_id,
                             username =  roomTicket.username,

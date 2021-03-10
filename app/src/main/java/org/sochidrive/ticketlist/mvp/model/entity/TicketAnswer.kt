@@ -9,5 +9,7 @@ data class TicketAnswer (
     @Expose
     val result: String,
     @Expose
+    val answer: String,
+    @Expose
     val data: List<TicketDetail>
 ): Parcelable

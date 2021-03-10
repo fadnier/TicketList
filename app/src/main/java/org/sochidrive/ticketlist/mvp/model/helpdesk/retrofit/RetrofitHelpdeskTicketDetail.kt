@@ -1,5 +1,6 @@
 package org.sochidrive.ticketlist.mvp.model.helpdesk.retrofit
 
+import io.reactivex.rxjava3.core.Single
 import io.reactivex.rxjava3.schedulers.Schedulers
 import org.sochidrive.ticketlist.mvp.model.api.IDataSource
 import org.sochidrive.ticketlist.mvp.model.cache.IHelpdeskTicketCache
@@ -12,8 +13,9 @@ import org.sochidrive.ticketlist.mvp.model.network.INetworkStatus
 class RetrofitHelpdeskTicketDetail(val api: IDataSource, val networkStatus: INetworkStatus, val cache: IHelpdeskTicketCache): ITicketDetailHelpdesk {
     override fun getTicketId(manager: Manager, ticket: TicketDetail) = networkStatus.isOnlineSingle().flatMap { isOnline->
         if(isOnline) {
-            api.getTicketsId(TicketData(manager.id!!,ticket.record_id),manager.token.toString()).flatMap { tickets->
-                cache.putTicket(tickets.data).toSingleDefault(tickets)
+            api.getTicketsId(TicketData(manager.id!!,ticket.record_id), manager.token).flatMap { tickets->
+                tickets.data?.let { cache.putTicket(it) }
+                Single.fromCallable{ tickets }
             }
         } else {
             cache.getTicket(ticket)

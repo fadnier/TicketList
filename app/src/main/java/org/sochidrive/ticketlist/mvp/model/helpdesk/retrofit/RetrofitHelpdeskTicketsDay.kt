@@ -1,5 +1,6 @@
 package org.sochidrive.ticketlist.mvp.model.helpdesk.retrofit
 
+import io.reactivex.rxjava3.core.Single
 import io.reactivex.rxjava3.schedulers.Schedulers
 import org.sochidrive.ticketlist.mvp.model.api.IDataSource
 import org.sochidrive.ticketlist.mvp.model.cache.IHelpdeskTicketsDayCache
@@ -16,8 +17,9 @@ class RetrofitHelpdeskTicketsDay(val api: IDataSource, val networkStatus: INetwo
         val formatDate = SimpleDateFormat("yyyy-MM-dd")
         val myDate = formatDate.format(Date())
         if(isOnline) {
-            api.getTicketsDay(TicketDayData(manager.id, manager.name,myDate.toString()),manager.token.toString()).flatMap { tickets->
-                cache.putTickets(tickets.data).toSingleDefault(tickets)
+            api.getTicketsDay(TicketDayData(manager.id, manager.name,myDate.toString()), manager.token).flatMap { tickets->
+                tickets.data?.let { cache.putTickets(it) }
+                Single.fromCallable { tickets }
             }
         } else {
             cache.getTickets(myDate.toString())
