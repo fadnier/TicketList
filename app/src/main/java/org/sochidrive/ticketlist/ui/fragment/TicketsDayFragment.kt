@@ -12,11 +12,11 @@ import org.sochidrive.ticketlist.App
 import org.sochidrive.ticketlist.R
 import org.sochidrive.ticketlist.mvp.model.entity.Manager
 import org.sochidrive.ticketlist.mvp.presenter.TicketsDayPresenter
-import org.sochidrive.ticketlist.mvp.view.TicketsView
+import org.sochidrive.ticketlist.mvp.view.TicketsViewToday
 import org.sochidrive.ticketlist.ui.BackButtonListener
 import org.sochidrive.ticketlist.ui.adapter.TicketsDayRvAdapter
 
-class TicketsDayFragment: MvpAppCompatFragment(), BackButtonListener, TicketsView {
+class TicketsDayFragment: MvpAppCompatFragment(), BackButtonListener, TicketsViewToday {
 
     companion object {
         private const val MANAGER_ARG = "manager"
@@ -48,6 +48,18 @@ class TicketsDayFragment: MvpAppCompatFragment(), BackButtonListener, TicketsVie
 
     override fun updateTicketsList() {
         adapter?.notifyDataSetChanged()
+    }
+
+    override fun clickTomorrowBtn(day: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun clickYesterdayBtn(day: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun setToday(day: String) {
+        textToday.text = day
     }
 
 }

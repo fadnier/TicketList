@@ -6,15 +6,13 @@ import org.sochidrive.ticketlist.mvp.model.entity.Manager
 import org.sochidrive.ticketlist.mvp.model.entity.TicketDetail
 import org.sochidrive.ticketlist.mvp.model.helpdesk.ITicketDayHelpdesk
 import org.sochidrive.ticketlist.mvp.presenter.list.ITicketsDayListPresenter
-import org.sochidrive.ticketlist.mvp.presenter.list.ITicketsListPresenter
-import org.sochidrive.ticketlist.mvp.view.TicketsView
+import org.sochidrive.ticketlist.mvp.view.TicketsViewToday
 import org.sochidrive.ticketlist.mvp.view.list.TicketItemDayView
-import org.sochidrive.ticketlist.mvp.view.list.TicketItemView
 import org.sochidrive.ticketlist.navigation.Screens
 import ru.terrakok.cicerone.Router
 import javax.inject.Inject
 
-class TicketsDayPresenter(val manager: Manager): MvpPresenter<TicketsView>() {
+class TicketsDayPresenter(val manager: Manager): MvpPresenter<TicketsViewToday>() {
 
     @Inject
     lateinit var ticketsDayHelpdesk: ITicketDayHelpdesk
@@ -55,7 +53,7 @@ class TicketsDayPresenter(val manager: Manager): MvpPresenter<TicketsView>() {
         }
     }
 
-    fun loadData() {
+    private fun loadData() {
         ticketsDayHelpdesk.getTickets(manager)
             .observeOn(mainThreadScheduler)
             .subscribe({
@@ -63,6 +61,7 @@ class TicketsDayPresenter(val manager: Manager): MvpPresenter<TicketsView>() {
                     ticketsListPresenter.tickets.clear()
                     ticketsListPresenter.tickets.addAll(it.data)
                     viewState.updateTicketsList()
+
                 } else {
                     router.navigateTo(Screens.LoginScreen())
                 }

@@ -13,9 +13,13 @@ import java.util.*
 
 class RetrofitHelpdeskTicketsDay(val api: IDataSource, val networkStatus: INetworkStatus, val cache: IHelpdeskTicketsDayCache): ITicketDayHelpdesk {
 
-    override fun getTickets(manager: Manager) = networkStatus.isOnlineSingle().flatMap { isOnline->
+    override fun getTickets(manager: Manager, day: String) = networkStatus.isOnlineSingle().flatMap { isOnline->
         val formatDate = SimpleDateFormat("yyyy-MM-dd")
-        val myDate = formatDate.format(Date())
+        var myDate = formatDate.format(Date())
+        if(day != "") {
+            myDate = day
+        }
+
         if(isOnline) {
             api.getTicketsDay(TicketDayData(manager.id, manager.name,myDate.toString()), manager.token).flatMap { tickets->
                 tickets.data?.let { cache.putTickets(it) }
