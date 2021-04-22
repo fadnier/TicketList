@@ -44,18 +44,28 @@ class TicketsDayFragment: MvpAppCompatFragment(), BackButtonListener, TicketsVie
         rv_tickets.layoutManager = LinearLayoutManager(requireContext())
         adapter = TicketsDayRvAdapter(presenter.ticketsListPresenter)
         rv_tickets.adapter = adapter
+        btnYesterday.setOnClickListener { presenter.clickYesterdayBtn() }
+        btnTomorrow.setOnClickListener { presenter.clickTomorrowBtn() }
     }
 
     override fun updateTicketsList() {
         adapter?.notifyDataSetChanged()
     }
 
-    override fun clickTomorrowBtn(day: String) {
-        TODO("Not yet implemented")
+    override fun clickTomorrowBtn() {
+        presenter.clickTomorrowBtn()
     }
 
-    override fun clickYesterdayBtn(day: String) {
-        TODO("Not yet implemented")
+    override fun clickYesterdayBtn() {
+        presenter.clickYesterdayBtn()
+    }
+
+    override fun setTextTomorrowBtn(day: String) {
+        btnTomorrow.text = day
+    }
+
+    override fun setTextYesterdayBtn(day: String) {
+        btnYesterday.text = day
     }
 
     override fun setToday(day: String) {

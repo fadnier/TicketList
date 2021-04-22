@@ -7,7 +7,9 @@ import moxy.viewstate.strategy.alias.AddToEndSingle
 interface TicketsViewToday: MvpView {
     fun init()
     fun updateTicketsList()
-    fun clickTomorrowBtn(day: String)
-    fun clickYesterdayBtn(day: String)
+    fun clickTomorrowBtn()
+    fun clickYesterdayBtn()
+    fun setTextTomorrowBtn(day: String)
+    fun setTextYesterdayBtn(day: String)
     fun setToday(day: String)
 }
