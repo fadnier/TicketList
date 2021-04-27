@@ -46,4 +46,6 @@ class TicketDetail (
     val status_id_color: String,
     @Expose
     val author_name: String,
+    @Expose
+    val comments: List<TicketComment>
 ): Parcelable

@@ -35,7 +35,7 @@ class TicketsDayRvAdapter(val presenter: ITicketsDayListPresenter) : RecyclerVie
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
-        ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_ticket2, parent, false))
+        ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_ticket_day, parent, false))
 
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {

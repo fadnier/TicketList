@@ -41,6 +41,7 @@ class TicketPresenter(val manager: Manager, val ticket: TicketDetail): MvpPresen
                         viewState.setTask(answer.data.task)
                         viewState.setUsername(answer.data.username)
                         viewState.settextExecuteFinal(answer.data.execute_final)
+                        viewState.setComments(answer.data.comments.size)
                     } else {
                         router.navigateTo(Screens.LoginScreen())
                     }

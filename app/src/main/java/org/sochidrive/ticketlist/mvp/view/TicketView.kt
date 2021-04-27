@@ -16,4 +16,5 @@ interface TicketView: MvpView {
     fun settextExecuteFinal(execute_final: String)
     fun setMobile(mobile: String)
     fun setTask(task: String)
+    fun setComments(commentCount: Int)
 }

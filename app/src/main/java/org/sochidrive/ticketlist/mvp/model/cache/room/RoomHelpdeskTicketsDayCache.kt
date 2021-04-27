@@ -6,6 +6,7 @@ import io.reactivex.rxjava3.schedulers.Schedulers
 import org.sochidrive.ticketlist.mvp.model.cache.IHelpdeskTicketsCache
 import org.sochidrive.ticketlist.mvp.model.cache.IHelpdeskTicketsDayCache
 import org.sochidrive.ticketlist.mvp.model.entity.TicketAnswer
+import org.sochidrive.ticketlist.mvp.model.entity.TicketComment
 import org.sochidrive.ticketlist.mvp.model.entity.TicketDetail
 import org.sochidrive.ticketlist.mvp.model.entity.room.Database
 import org.sochidrive.ticketlist.mvp.model.entity.room.RoomTicket
@@ -58,7 +59,9 @@ class RoomHelpdeskTicketsDayCache(val db: Database): IHelpdeskTicketsDayCache{
                     status_id = roomTicket.status_id,
                     status_id_color = roomTicket.status_id_color,
                     status_id_descr = roomTicket.status_id_descr,
-                    author_name = roomTicket.author_name)
+                    author_name = roomTicket.author_name,
+                    comments = listOf<TicketComment>()
+                )
             }
         )
     }

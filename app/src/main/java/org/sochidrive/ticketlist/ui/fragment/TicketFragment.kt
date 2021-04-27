@@ -83,4 +83,8 @@ class TicketFragment: MvpAppCompatFragment(), BackButtonListener, TicketView {
     override fun setTask(task: String) {
         textTask.text = task
     }
+
+    override fun setComments(commentCount: Int) {
+        textComments.text = commentCount.toString()
+    }
 }
