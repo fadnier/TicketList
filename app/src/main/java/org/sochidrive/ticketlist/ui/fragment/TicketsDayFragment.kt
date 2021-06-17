@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
-import kotlinx.android.synthetic.main.fragment_list_ticket.*
+import kotlinx.android.synthetic.main.fragment_list_ticket_day.*
 import moxy.MvpAppCompatFragment
 import moxy.ktx.moxyPresenter
 import org.sochidrive.ticketlist.App
@@ -36,7 +36,7 @@ class TicketsDayFragment: MvpAppCompatFragment(), BackButtonListener, TicketsVie
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle? ) =
-        View.inflate(context, R.layout.fragment_list_ticket, null)
+        View.inflate(context, R.layout.fragment_list_ticket_day, null)
 
     override fun backPressed() = presenter.backClick()
 

@@ -72,6 +72,7 @@ class TicketsDayPresenter(val manager: Manager): MvpPresenter<TicketsViewToday>(
             },{
                 it.fillInStackTrace()
             })
+        viewState.setToday(selectToday)
         viewState.setTextTomorrowBtn(DataTime.getDayTomorrow(selectToday))
         viewState.setTextYesterdayBtn(DataTime.getDayYesterday(selectToday))
     }
