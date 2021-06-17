@@ -18,10 +18,6 @@ class MainMenuPresenter(private val manager: Manager): MvpPresenter<MainMenuView
         viewState.setName(manager.name.toString())
     }
 
-    fun clickBtnAllTicket() {
-        router.navigateTo(Screens.TicketsScreen(manager))
-    }
-
     fun clickBtnTodayTicket() {
         router.navigateTo(Screens.TicketsDayScreen(manager))
     }

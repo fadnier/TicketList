@@ -6,14 +6,11 @@ import dagger.Provides
 import org.sochidrive.ticketlist.App
 import org.sochidrive.ticketlist.mvp.model.cache.IHelpdeskManagerCache
 import org.sochidrive.ticketlist.mvp.model.cache.IHelpdeskTicketCache
-import org.sochidrive.ticketlist.mvp.model.cache.IHelpdeskTicketsCache
 import org.sochidrive.ticketlist.mvp.model.cache.IHelpdeskTicketsDayCache
 import org.sochidrive.ticketlist.mvp.model.cache.room.RoomHelpdeskManagerCache
 import org.sochidrive.ticketlist.mvp.model.cache.room.RoomHelpdeskTicketCache
-import org.sochidrive.ticketlist.mvp.model.cache.room.RoomHelpdeskTicketsCache
 import org.sochidrive.ticketlist.mvp.model.cache.room.RoomHelpdeskTicketsDayCache
 import org.sochidrive.ticketlist.mvp.model.entity.room.Database
-import org.sochidrive.ticketlist.mvp.model.entity.room.MIGRATION_1_2
 import javax.inject.Singleton
 
 @Module
@@ -24,12 +21,6 @@ class DatabaseModule {
             .fallbackToDestructiveMigration()// - для разрушения бд и создания новой
             //.addMigrations(MIGRATION_1_2)
             .build()
-
-    @Singleton
-    @Provides
-    fun ticketsCCache(database: Database): IHelpdeskTicketsCache {
-        return RoomHelpdeskTicketsCache(database)
-    }
 
     @Singleton
     @Provides

@@ -37,12 +37,7 @@ class MainMenuFragment: MvpAppCompatFragment(), BackButtonListener, MainMenuView
     override fun backPressed() = presenter.backClick()
 
     override fun init() {
-        btnTicketAll.setOnClickListener { clickBtnAllTicket() }
         btnTicketToday.setOnClickListener { clickBtnTodayTicket() }
-    }
-
-    override fun clickBtnAllTicket() {
-        presenter.clickBtnAllTicket()
     }
 
     override fun clickBtnTodayTicket() {

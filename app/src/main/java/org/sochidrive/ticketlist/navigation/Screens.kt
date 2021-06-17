@@ -11,10 +11,6 @@ class Screens {
         override fun getFragment() = LoginFragment.newInstance()
     }
 
-    class TicketsScreen(val manager: Manager) : SupportAppScreen() {
-        override fun getFragment() = TicketsFragment.newInstance(manager)
-    }
-
     class TicketsDayScreen(val manager: Manager) : SupportAppScreen() {
         override fun getFragment() = TicketsDayFragment.newInstance(manager)
     }

@@ -21,7 +21,6 @@ interface AppComponent {
     fun inject(mainActivity: MainActivity)
     fun inject(mainPresenter: MainPresenter)
     fun inject(loginPresenter: LoginPresenter)
-    fun inject(ticketsPresenter: TicketsPresenter)
     fun inject(mainMenuPresenter: MainMenuPresenter)
     fun inject(ticketPresenter: TicketPresenter)
     fun inject(ticketsDayPresenter: TicketsDayPresenter)

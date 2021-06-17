@@ -3,7 +3,6 @@ package org.sochidrive.ticketlist.mvp.model.cache.room
 import io.reactivex.rxjava3.core.Completable
 import io.reactivex.rxjava3.core.Single
 import io.reactivex.rxjava3.schedulers.Schedulers
-import org.sochidrive.ticketlist.mvp.model.cache.IHelpdeskTicketsCache
 import org.sochidrive.ticketlist.mvp.model.cache.IHelpdeskTicketsDayCache
 import org.sochidrive.ticketlist.mvp.model.entity.TicketAnswer
 import org.sochidrive.ticketlist.mvp.model.entity.TicketDetail
