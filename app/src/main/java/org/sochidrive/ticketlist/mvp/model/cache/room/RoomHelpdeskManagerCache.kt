@@ -21,10 +21,10 @@ class RoomHelpdeskManagerCache(val db: Database): IHelpdeskManagerCache {
     }.subscribeOn(Schedulers.io())
 
     override fun getAuthManager() = Single.fromCallable {
+        println("DEBUG: room get bd")
         db.manager.getManager().let { roomManager ->
             AuthAnswer(
                     result = "ok",
-                    answer = "",
                     data = Manager(answer = null,
                             id = roomManager.id,
                             login = roomManager.login,

@@ -22,12 +22,11 @@ class LoginPresenter: MvpPresenter<LoginView>() {
         viewState.init()
         viewState.loadLogo("https://api.tvintel.info/pic/logo_tvintel3.png")
         authManager.checkCacheAuth().observeOn(mainThreadScheduler).subscribe({
-            println("DEBUG: asdasa")
             if(it.result=="Ok") {
                 viewState.showMessage("Востановление: "+it.data.name)
                 router.replaceScreen(Screens.MainMenuScreen(it.data))
             } else {
-                viewState.showMessage(it.answer)
+                viewState.showMessage(it.data.answer)
             }
         },{
             it.fillInStackTrace()
@@ -42,7 +41,7 @@ class LoginPresenter: MvpPresenter<LoginView>() {
                         viewState.showMessage("Успешно: "+it.data.name)
                         router.replaceScreen(Screens.MainMenuScreen(it.data))
                     } else {
-                        viewState.showMessage(it.answer)
+                        viewState.showMessage(it.data.answer)
                     }
                 },{
                     it.fillInStackTrace()

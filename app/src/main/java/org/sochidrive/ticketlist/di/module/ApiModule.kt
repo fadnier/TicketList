@@ -5,6 +5,8 @@ import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import dagger.Module
 import dagger.Provides
+import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import org.sochidrive.ticketlist.App
 import org.sochidrive.ticketlist.mvp.model.api.IDataSource
 import org.sochidrive.ticketlist.mvp.model.network.INetworkStatus
@@ -32,6 +34,7 @@ class ApiModule {
     @Provides
     fun api(@Named("baseUrl") baseUrl: String, gson: Gson) : IDataSource = Retrofit.Builder()
             .baseUrl(baseUrl)
+            .client(client(interceptor()))
             .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
             .addConverterFactory(GsonConverterFactory.create(gson))
             .build()
@@ -40,4 +43,11 @@ class ApiModule {
     @Singleton
     @Provides
     fun networkStatus(app: App): INetworkStatus = AndroidNetworkStatus(app)
+
+    private fun interceptor(): HttpLoggingInterceptor = HttpLoggingInterceptor()
+
+    private fun client(interceptor: HttpLoggingInterceptor): OkHttpClient = OkHttpClient()
+        .newBuilder()
+        .addInterceptor(interceptor.apply { interceptor.level = HttpLoggingInterceptor.Level.BODY })
+        .build()
 }

@@ -9,7 +9,5 @@ data class AuthAnswer (
     @Expose
     var result: String,
     @Expose
-    val answer: String,
-    @Expose
     val data: Manager
 ): Parcelable
