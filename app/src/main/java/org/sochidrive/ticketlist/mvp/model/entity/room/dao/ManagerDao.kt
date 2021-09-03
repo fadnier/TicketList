@@ -13,4 +13,7 @@ interface ManagerDao {
 
     @Query("SELECT * FROM RoomManager LIMIT 1")
     fun getManager(): RoomManager
+
+    @Query("SELECT COUNT(*) FROM RoomManager")
+    fun getCountManager(): Int
 }

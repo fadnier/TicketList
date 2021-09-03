@@ -26,7 +26,7 @@ class LoginPresenter: MvpPresenter<LoginView>() {
                 viewState.showMessage("Востановление: "+it.data.name)
                 router.replaceScreen(Screens.MainMenuScreen(it.data))
             } else {
-                viewState.showMessage(it.data.answer)
+                //viewState.showMessage(it.data.answer)
             }
         },{
             it.fillInStackTrace()

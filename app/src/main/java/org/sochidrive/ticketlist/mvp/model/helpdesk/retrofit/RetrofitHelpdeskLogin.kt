@@ -1,5 +1,6 @@
 package org.sochidrive.ticketlist.mvp.model.helpdesk.retrofit
 
+import io.reactivex.rxjava3.core.Completable
 import io.reactivex.rxjava3.core.Single
 import io.reactivex.rxjava3.schedulers.Schedulers
 import org.sochidrive.ticketlist.mvp.model.api.IDataSource
@@ -13,9 +14,8 @@ import org.sochidrive.ticketlist.mvp.model.network.INetworkStatus
 class RetrofitHelpdeskLogin(val api: IDataSource, val networkStatus: INetworkStatus, val cache: IHelpdeskManagerCache): IHelpdeskLogin {
     override fun getAuth(login: String, password: String) = networkStatus.isOnlineSingle().flatMap { isOnline->
         if(isOnline) {
-            api.getAuth(AuthData(login, password)).flatMap {
-                it.data?.let { cache.saveAuthManager(it) }
-                Single.fromCallable { it }
+            api.getAuth(AuthData(login, password)).flatMap { authAnswer ->
+                cache.saveAuthManager(authAnswer.data).toSingleDefault(authAnswer)
             }
         } else {
             Single.fromCallable{ AuthAnswer(
@@ -33,12 +33,22 @@ class RetrofitHelpdeskLogin(val api: IDataSource, val networkStatus: INetworkSta
     override fun checkCacheAuth() = networkStatus.isOnlineSingle().flatMap { isOnline->
 
         if(isOnline) {
-            println("DEBUG: retrofit start check cache")
             cache.getAuthManager().flatMap { cacheManager->
-                println("DEBUG: room get login")
-                api.getTickets(cacheManager.data, cacheManager.data.token).flatMap {
-                    cacheManager.result = it.result
-                    Single.fromCallable { cacheManager }
+                if(cacheManager.result=="ok") {
+                    api.getTickets(cacheManager.data, cacheManager.data.token).flatMap {
+                        cacheManager.result = it.result
+                        Single.fromCallable { cacheManager }
+                    }
+                } else {
+                    Single.fromCallable{ AuthAnswer(
+                        result = "Error",
+                        data = Manager(answer = "No save login",
+                            id = 0,
+                            login = "",
+                            name = "",
+                            user_level = 0,
+                            token = "")
+                    ) }
                 }
             }
         } else {

@@ -20,8 +20,7 @@ class RetrofitHelpdeskTicketsDay(val api: IDataSource, val networkStatus: INetwo
 
         if(isOnline) {
             api.getTicketsDay(TicketDayData(manager.id, manager.name,myDate), manager.token).flatMap { tickets->
-                tickets.data?.let { cache.putTickets(it) }
-                Single.fromCallable { tickets }
+                cache.putTickets(tickets.data).toSingleDefault(tickets)
             }
         } else {
             cache.getTickets(myDate)
