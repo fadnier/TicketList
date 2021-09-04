@@ -48,4 +48,8 @@ class RoomHelpdeskManagerCache(val db: Database): IHelpdeskManagerCache {
             }
         }
     }
+
+    override fun delSaveManager() = Completable.fromAction {
+        db.manager.deleteAll()
+    }.subscribeOn(Schedulers.io())
 }

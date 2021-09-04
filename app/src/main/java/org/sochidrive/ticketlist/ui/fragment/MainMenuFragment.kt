@@ -38,10 +38,15 @@ class MainMenuFragment: MvpAppCompatFragment(), BackButtonListener, MainMenuView
 
     override fun init() {
         btnTicketToday.setOnClickListener { clickBtnTodayTicket() }
+        btnExit.setOnClickListener { clickBtnExit() }
     }
 
     override fun clickBtnTodayTicket() {
         presenter.clickBtnTodayTicket()
+    }
+
+    override fun clickBtnExit() {
+        presenter.clickBtnExit()
     }
 
     override fun setName(name: String) {

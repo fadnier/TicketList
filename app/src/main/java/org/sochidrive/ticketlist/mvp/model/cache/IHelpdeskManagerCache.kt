@@ -8,4 +8,5 @@ import org.sochidrive.ticketlist.mvp.model.entity.Manager
 interface IHelpdeskManagerCache {
     fun saveAuthManager(manager: Manager): Completable
     fun getAuthManager(): Single<AuthAnswer>
+    fun delSaveManager(): Completable
 }

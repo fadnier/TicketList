@@ -7,5 +7,6 @@ import moxy.viewstate.strategy.alias.AddToEndSingle
 interface MainMenuView: MvpView {
     fun init()
     fun clickBtnTodayTicket()
+    fun clickBtnExit()
     fun setName(name: String)
 }
