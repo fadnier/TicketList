@@ -11,17 +11,17 @@ import org.sochidrive.ticketlist.App
 import org.sochidrive.ticketlist.R
 import org.sochidrive.ticketlist.mvp.model.entity.Manager
 import org.sochidrive.ticketlist.mvp.model.entity.TicketDetail
-import org.sochidrive.ticketlist.mvp.presenter.TicketPresenter
-import org.sochidrive.ticketlist.mvp.view.TicketView
+import org.sochidrive.ticketlist.mvp.presenter.AgreementsPresenter
+import org.sochidrive.ticketlist.mvp.view.AgreementsView
 import org.sochidrive.ticketlist.ui.BackButtonListener
 
-class TicketFragment: MvpAppCompatFragment(), BackButtonListener, TicketView {
+class AgreementsFragment: MvpAppCompatFragment(), BackButtonListener, AgreementsView {
 
     companion object {
         private const val MANAGER_ARG = "manager"
         private const val TICKET_ARG = "ticket"
 
-        fun newInstance(manager: Manager, ticket: TicketDetail) = TicketFragment().apply {
+        fun newInstance(manager: Manager, ticket: TicketDetail) = AgreementsFragment().apply {
             arguments = Bundle().apply {
                 putParcelable(MANAGER_ARG, manager)
                 putParcelable(TICKET_ARG, ticket)
@@ -32,15 +32,14 @@ class TicketFragment: MvpAppCompatFragment(), BackButtonListener, TicketView {
     val presenter by moxyPresenter {
         val manager = arguments?.getParcelable<Manager>(MANAGER_ARG) as Manager
         val ticket = arguments?.getParcelable<TicketDetail>(TICKET_ARG) as TicketDetail
-        TicketPresenter(manager,ticket).apply { App.instance.appComponent.inject(this) }
+        AgreementsPresenter(manager, ticket).apply { App.instance.appComponent.inject(this) }
     }
 
-    override fun backPressed() = presenter.backClick()
-
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?) =
-            View.inflate(context, R.layout.fragment_ticket, null)
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View =
+        View.inflate(context, R.layout.fragment_agreements, null)
 
     override fun init() {
+        bottom_navigation_view.selectedItemId = R.id.menu_agrm_info
         bottom_navigation_view.setOnItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.menu_ticket_info -> {
@@ -57,43 +56,7 @@ class TicketFragment: MvpAppCompatFragment(), BackButtonListener, TicketView {
         }
     }
 
-    override fun setRecordId(record_id: Int) {
-        textRecordId.text = record_id.toString()
-    }
-
-    override fun setUsername(username: String) {
-        textUsername.text = username
-    }
-
-    override fun setDescr(descr: String) {
-        textDescr.text = descr
-    }
-
-    override fun setAddress(address: String) {
-        textAddress.text = address
-    }
-
-    override fun setNumber(number: String) {
-        textNumber.text = number
-    }
-
-    override fun setCreated(created: String) {
-        textCreated.text = created
-    }
-
-    override fun setExecuteStart(execute_start: String) {
-        textExecuteStart.text = execute_start
-    }
-
-    override fun settextExecuteFinal(execute_final: String) {
-        textExecuteFinal.text = execute_final
-    }
-
-    override fun setMobile(mobile: String) {
-        textMobile.text = mobile
-    }
-
-    override fun setTask(task: String) {
-        textTask.text = task
+    override fun backPressed(): Boolean {
+        TODO("Not yet implemented")
     }
 }

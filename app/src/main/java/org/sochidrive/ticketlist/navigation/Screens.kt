@@ -22,4 +22,8 @@ class Screens {
     class TicketScreen(val manager: Manager, val ticket: TicketDetail) : SupportAppScreen() {
         override fun getFragment() = TicketFragment.newInstance(manager, ticket)
     }
+
+    class AgreementsScreen(val manager: Manager, val ticket: TicketDetail) : SupportAppScreen() {
+        override fun getFragment() = AgreementsFragment.newInstance(manager, ticket)
+    }
 }

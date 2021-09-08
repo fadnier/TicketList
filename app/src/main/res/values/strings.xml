@@ -16,4 +16,5 @@
     <string name="info_abon">Информация о абоненте</string>
     <string name="info_ticket">Информация о заявке</string>
     <string name="exit">Выход</string>
+    <string name="back">Назад</string>
 </resources>

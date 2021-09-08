@@ -51,10 +51,12 @@ class TicketPresenter(val manager: Manager, val ticket: TicketDetail): MvpPresen
     }
 
     fun btnTicketClick(): Boolean {
+        router.replaceScreen(Screens.TicketScreen(manager, ticket))
         return true
     }
 
     fun btnAgrmClick(): Boolean {
+        router.replaceScreen(Screens.AgreementsScreen(manager, ticket))
         return true
     }
 
