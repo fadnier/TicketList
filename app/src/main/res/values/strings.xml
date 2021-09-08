@@ -13,4 +13,7 @@
     <string name="date_final">Дата окончания:</string>
     <string name="mobile">Контакный телефон:</string>
     <string name="task">Описание:</string>
+    <string name="info_abon">Информация о абоненте</string>
+    <string name="info_ticket">Информация о заявке</string>
+    <string name="exit">Выход</string>
 </resources>

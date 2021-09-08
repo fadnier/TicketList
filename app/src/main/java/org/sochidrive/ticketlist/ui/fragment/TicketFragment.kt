@@ -41,7 +41,20 @@ class TicketFragment: MvpAppCompatFragment(), BackButtonListener, TicketView {
             View.inflate(context, R.layout.fragment_ticket, null)
 
     override fun init() {
-        ///
+        bottom_navigation_view.setOnItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.menu_ticket_info -> {
+                    presenter.btnTicketClick()
+                }
+                R.id.menu_agrm_info -> {
+                    presenter.btnAgrmClick()
+                }
+                R.id.menu_exit -> {
+                    presenter.btnExitClick()
+                }
+            }
+            true
+        }
     }
 
     override fun setRecordId(record_id: Int) {

@@ -1,196 +1,213 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_height="match_parent"
+    >
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-    <TextView
-        android:id="@+id/labelRecordId"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/number_ticket"
-        android:textStyle="bold"
-        android:padding="10dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_height="match_parent">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/labelRecordId"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/number_ticket"
+                android:textStyle="bold"
+                android:padding="10dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/textRecordId"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBaseline_toBaselineOf="@+id/labelRecordId"
-        app:layout_constraintStart_toEndOf="@+id/labelRecordId"
-        tools:text="123"
+            <TextView
+                android:id="@+id/textRecordId"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBaseline_toBaselineOf="@+id/labelRecordId"
+                app:layout_constraintStart_toEndOf="@+id/labelRecordId"
+                tools:text="123"
+                />
+
+            <TextView
+                android:id="@+id/labelDescr"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="Тип заявки:"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/labelRecordId" />
+
+            <TextView
+                android:id="@+id/textDescr"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="textMultiLine"
+                app:layout_constraintBaseline_toBaselineOf="@+id/labelDescr"
+                app:layout_constraintStart_toEndOf="@+id/labelDescr"
+                tools:text="нет Интернета" />
+
+            <TextView
+                android:id="@+id/labelUsername"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="@string/fio"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/labelDescr" />
+
+            <TextView
+                android:id="@+id/textUsername"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBaseline_toBaselineOf="@+id/labelUsername"
+                app:layout_constraintStart_toEndOf="@+id/labelUsername"
+                tools:text="Иванов И.В."/>
+
+            <TextView
+                android:id="@+id/labelAddress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="@string/address"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/labelNumber" />
+
+            <TextView
+                android:id="@+id/textAddress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="textMultiLine"
+                app:layout_constraintBaseline_toBaselineOf="@+id/labelAddress"
+                app:layout_constraintStart_toEndOf="@+id/labelAddress"
+                tools:text="ул. Далекая д. 10 кв. 33" />
+
+            <TextView
+                android:id="@+id/labelNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="@string/dog_number"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/labelUsername"
+             />
+
+            <TextView
+                android:id="@+id/textNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBaseline_toBaselineOf="@+id/labelNumber"
+                app:layout_constraintStart_toEndOf="@+id/labelNumber"
+                tools:text="000001" />
+
+            <TextView
+                android:id="@+id/labelCreated"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="@string/date_created"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/labelAddress" />
+
+            <TextView
+                android:id="@+id/textCreated"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBaseline_toBaselineOf="@+id/labelCreated"
+                app:layout_constraintStart_toEndOf="@+id/labelCreated"
+                tools:text="2021-01-01 00:00:00" />
+
+            <TextView
+                android:id="@+id/labelExecuteStart"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="@string/date_start"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/labelCreated" />
+
+            <TextView
+                android:id="@+id/textExecuteStart"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBaseline_toBaselineOf="@+id/labelExecuteStart"
+                app:layout_constraintStart_toEndOf="@+id/labelExecuteStart"
+                tools:text="2021-01-01 00:00:00" />
+
+            <TextView
+                android:id="@+id/labelExecuteFinal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="@string/date_final"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/labelExecuteStart" />
+
+            <TextView
+                android:id="@+id/textExecuteFinal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBaseline_toBaselineOf="@+id/labelExecuteFinal"
+                app:layout_constraintStart_toEndOf="@+id/labelExecuteFinal"
+                tools:text="2021-01-01 00:00:00" />
+
+            <TextView
+                android:id="@+id/labelMobile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="@string/mobile"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/labelExecuteFinal" />
+
+            <TextView
+                android:id="@+id/textMobile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBaseline_toBaselineOf="@+id/labelMobile"
+                app:layout_constraintStart_toEndOf="@+id/labelMobile"
+                tools:text="+7-999-123-12-12" />
+
+            <TextView
+                android:id="@+id/labelTask"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="@string/task"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/labelMobile" />
+
+            <TextView
+                android:id="@+id/textTask"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/labelTask"
+                tools:text="@tools:sample/lorem/random" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+    android:id="@+id/bottom_navigation_view"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    app:labelVisibilityMode="selected"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:menu="@menu/menu_bottom"
         />
 
-    <TextView
-        android:id="@+id/labelDescr"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:text="Тип заявки:"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/labelRecordId" />
-
-    <TextView
-        android:id="@+id/textDescr"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textMultiLine"
-        app:layout_constraintBaseline_toBaselineOf="@+id/labelDescr"
-        app:layout_constraintStart_toEndOf="@+id/labelDescr"
-        tools:text="нет Интернета" />
-
-    <TextView
-        android:id="@+id/labelUsername"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:text="@string/fio"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/labelDescr" />
-
-    <TextView
-        android:id="@+id/textUsername"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBaseline_toBaselineOf="@+id/labelUsername"
-        app:layout_constraintStart_toEndOf="@+id/labelUsername"
-        tools:text="Иванов И.В."/>
-
-    <TextView
-        android:id="@+id/labelAddress"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:text="@string/address"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/labelNumber" />
-
-    <TextView
-        android:id="@+id/textAddress"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textMultiLine"
-        app:layout_constraintBaseline_toBaselineOf="@+id/labelAddress"
-        app:layout_constraintStart_toEndOf="@+id/labelAddress"
-        tools:text="ул. Далекая д. 10 кв. 33" />
-
-    <TextView
-        android:id="@+id/labelNumber"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:text="@string/dog_number"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/labelUsername"
-     />
-
-    <TextView
-        android:id="@+id/textNumber"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBaseline_toBaselineOf="@+id/labelNumber"
-        app:layout_constraintStart_toEndOf="@+id/labelNumber"
-        tools:text="000001" />
-
-    <TextView
-        android:id="@+id/labelCreated"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:text="@string/date_created"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/labelAddress" />
-
-    <TextView
-        android:id="@+id/textCreated"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBaseline_toBaselineOf="@+id/labelCreated"
-        app:layout_constraintStart_toEndOf="@+id/labelCreated"
-        tools:text="2021-01-01 00:00:00" />
-
-    <TextView
-        android:id="@+id/labelExecuteStart"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:text="@string/date_start"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/labelCreated" />
-
-    <TextView
-        android:id="@+id/textExecuteStart"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBaseline_toBaselineOf="@+id/labelExecuteStart"
-        app:layout_constraintStart_toEndOf="@+id/labelExecuteStart"
-        tools:text="2021-01-01 00:00:00" />
-
-    <TextView
-        android:id="@+id/labelExecuteFinal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:text="@string/date_final"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/labelExecuteStart" />
-
-    <TextView
-        android:id="@+id/textExecuteFinal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBaseline_toBaselineOf="@+id/labelExecuteFinal"
-        app:layout_constraintStart_toEndOf="@+id/labelExecuteFinal"
-        tools:text="2021-01-01 00:00:00" />
-
-    <TextView
-        android:id="@+id/labelMobile"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:text="@string/mobile"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/labelExecuteFinal" />
-
-    <TextView
-        android:id="@+id/textMobile"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBaseline_toBaselineOf="@+id/labelMobile"
-        app:layout_constraintStart_toEndOf="@+id/labelMobile"
-        tools:text="+7-999-123-12-12" />
-
-    <TextView
-        android:id="@+id/labelTask"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:text="@string/task"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/labelMobile" />
-
-    <TextView
-        android:id="@+id/textTask"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="10dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/labelTask"
-        tools:text="@tools:sample/lorem/random" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>
-</ScrollView>

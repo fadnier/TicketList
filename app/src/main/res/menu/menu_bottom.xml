@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/menu_ticket_info"
+        android:icon="@drawable/ic_baseline_build_24"
+        android:title="@string/info_ticket" />
+    <item
+        android:id="@+id/menu_agrm_info"
+        android:icon="@drawable/ic_baseline_assignment_ind_24"
+        android:title="@string/info_abon" />
+    <item
+        android:id="@+id/menu_exit"
+        android:icon="@drawable/ic_baseline_exit_to_app_24"
+        android:title="@string/exit" />
+</menu>

@@ -8,6 +8,7 @@ import org.sochidrive.ticketlist.mvp.model.helpdesk.ITicketDetailHelpdesk
 import org.sochidrive.ticketlist.mvp.view.TicketView
 import org.sochidrive.ticketlist.navigation.Screens
 import ru.terrakok.cicerone.Router
+import ru.terrakok.cicerone.Screen
 import javax.inject.Inject
 
 class TicketPresenter(val manager: Manager, val ticket: TicketDetail): MvpPresenter<TicketView>() {
@@ -47,6 +48,19 @@ class TicketPresenter(val manager: Manager, val ticket: TicketDetail): MvpPresen
                 },{
                     it.fillInStackTrace()
                 })
+    }
+
+    fun btnTicketClick(): Boolean {
+        return true
+    }
+
+    fun btnAgrmClick(): Boolean {
+        return true
+    }
+
+    fun btnExitClick(): Boolean {
+        router.replaceScreen(Screens.MainMenuScreen(manager))
+        return true
     }
 
     fun backClick(): Boolean {
