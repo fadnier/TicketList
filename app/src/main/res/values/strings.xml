@@ -17,4 +17,6 @@
     <string name="info_ticket">Информация о заявке</string>
     <string name="exit">Выход</string>
     <string name="back">Назад</string>
+    <string name="login_name">Логин</string>
+    <string name="password">Пароль</string>
 </resources>
