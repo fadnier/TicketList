@@ -5,11 +5,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
-import kotlinx.android.synthetic.main.fragment_list_ticket_day.*
 import moxy.MvpAppCompatFragment
 import moxy.ktx.moxyPresenter
 import org.sochidrive.ticketlist.App
-import org.sochidrive.ticketlist.R
+import org.sochidrive.ticketlist.databinding.FragmentListTicketDayBinding
 import org.sochidrive.ticketlist.mvp.model.entity.Manager
 import org.sochidrive.ticketlist.mvp.presenter.TicketsDayPresenter
 import org.sochidrive.ticketlist.mvp.view.TicketsViewToday
@@ -17,6 +16,7 @@ import org.sochidrive.ticketlist.ui.BackButtonListener
 import org.sochidrive.ticketlist.ui.adapter.TicketsDayRvAdapter
 
 class TicketsDayFragment: MvpAppCompatFragment(), BackButtonListener, TicketsViewToday {
+    private lateinit var binding: FragmentListTicketDayBinding
 
     companion object {
         private const val MANAGER_ARG = "manager"
@@ -35,17 +35,19 @@ class TicketsDayFragment: MvpAppCompatFragment(), BackButtonListener, TicketsVie
         TicketsDayPresenter(managers).apply { App.instance.appComponent.inject(this) }
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle? ) =
-        View.inflate(context, R.layout.fragment_list_ticket_day, null)
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle? ): View {
+        binding = FragmentListTicketDayBinding.inflate(inflater, container, false)
+        return binding.root
+    }
 
     override fun backPressed() = presenter.backClick()
 
     override fun init() {
-        rv_tickets.layoutManager = LinearLayoutManager(requireContext())
+        binding.rvTickets.layoutManager = LinearLayoutManager(requireContext())
         adapter = TicketsDayRvAdapter(presenter.ticketsListPresenter)
-        rv_tickets.adapter = adapter
-        btnYesterday.setOnClickListener { presenter.clickYesterdayBtn() }
-        btnTomorrow.setOnClickListener { presenter.clickTomorrowBtn() }
+        binding.rvTickets.adapter = adapter
+        binding.btnYesterday.setOnClickListener { presenter.clickYesterdayBtn() }
+        binding.btnTomorrow.setOnClickListener { presenter.clickTomorrowBtn() }
     }
 
     override fun updateTicketsList() {
@@ -61,15 +63,15 @@ class TicketsDayFragment: MvpAppCompatFragment(), BackButtonListener, TicketsVie
     }
 
     override fun setTextTomorrowBtn(day: String) {
-        btnTomorrow.text = day
+        binding.btnTomorrow.text = day
     }
 
     override fun setTextYesterdayBtn(day: String) {
-        btnYesterday.text = day
+        binding.btnYesterday.text = day
     }
 
     override fun setToday(day: String) {
-        textToday.text = day
+        binding.textToday.text = day
     }
 
 }

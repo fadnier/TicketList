@@ -2,11 +2,11 @@ package org.sochidrive.ticketlist.ui
 
 import android.os.Bundle
 import androidx.appcompat.widget.Toolbar
-import kotlinx.android.synthetic.main.activity_main.*
 import moxy.MvpAppCompatActivity
 import moxy.ktx.moxyPresenter
 import org.sochidrive.ticketlist.App
 import org.sochidrive.ticketlist.R
+import org.sochidrive.ticketlist.databinding.ActivityMainBinding
 import org.sochidrive.ticketlist.mvp.presenter.MainPresenter
 import org.sochidrive.ticketlist.mvp.view.MainView
 import ru.terrakok.cicerone.NavigatorHolder
@@ -14,6 +14,7 @@ import ru.terrakok.cicerone.android.support.SupportAppNavigator
 import javax.inject.Inject
 
 class MainActivity : MvpAppCompatActivity(), MainView {
+    private lateinit var binding: ActivityMainBinding
 
     @Inject
     lateinit var navigatorHolder: NavigatorHolder
@@ -22,9 +23,10 @@ class MainActivity : MvpAppCompatActivity(), MainView {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        val toolbars: Toolbar = toolbar
+        val toolbars: Toolbar = binding.toolbar
 
         setSupportActionBar(toolbars)
 

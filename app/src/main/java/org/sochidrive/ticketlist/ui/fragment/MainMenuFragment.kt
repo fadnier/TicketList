@@ -4,17 +4,17 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import kotlinx.android.synthetic.main.main_menu_fragment.*
 import moxy.MvpAppCompatFragment
 import moxy.ktx.moxyPresenter
 import org.sochidrive.ticketlist.App
-import org.sochidrive.ticketlist.R
+import org.sochidrive.ticketlist.databinding.MainMenuFragmentBinding
 import org.sochidrive.ticketlist.mvp.model.entity.Manager
 import org.sochidrive.ticketlist.mvp.presenter.MainMenuPresenter
 import org.sochidrive.ticketlist.mvp.view.MainMenuView
 import org.sochidrive.ticketlist.ui.BackButtonListener
 
 class MainMenuFragment: MvpAppCompatFragment(), BackButtonListener, MainMenuView {
+    private lateinit var binding: MainMenuFragmentBinding
 
     companion object {
         private const val MANAGER_ARG = "manager"
@@ -31,14 +31,17 @@ class MainMenuFragment: MvpAppCompatFragment(), BackButtonListener, MainMenuView
         MainMenuPresenter(managers).apply { App.instance.appComponent.inject(this) }
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle? ) =
-            View.inflate(context, R.layout.main_menu_fragment, null)
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle? ) : View {
+        binding = MainMenuFragmentBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
 
     override fun backPressed() = presenter.backClick()
 
     override fun init() {
-        btnTicketToday.setOnClickListener { clickBtnTodayTicket() }
-        btnExit.setOnClickListener { clickBtnExit() }
+        binding.btnTicketToday.setOnClickListener { clickBtnTodayTicket() }
+        binding.btnExit.setOnClickListener { clickBtnExit() }
     }
 
     override fun clickBtnTodayTicket() {
@@ -50,6 +53,6 @@ class MainMenuFragment: MvpAppCompatFragment(), BackButtonListener, MainMenuView
     }
 
     override fun setName(name: String) {
-        montagName.text = name
+        binding.montagName.text = name
     }
 }
